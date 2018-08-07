@@ -1,18 +1,19 @@
 var userSentence = "";
 var capitalizedPhase = "";
 
-var capitalizeFirstAndLast = function(userSentence) {
-  var firstLetterCapitalized = userSentence.replace(/^[a-z]/, function(firstLetter) {
-     return firstLetter.toUpperCase();
-  });
-
-  var firstAndLastLettersCapitalized = firstLetterCapitalized.replace(/[a-z]$/, function(lastLetter) {
-     return lastLetter.toUpperCase();
-  });
-
-  return firstAndLastLettersCapitalized;
+var capitalizeFirstAndLast = function(input) {
+  var singleWord = input.replace(/\s/, "");
+  var firstLetter = singleWord.match(/^[a-z]/);
+  var firstLetterUppercase = firstLetter.toString().toUpperCase();
+  var lastLetter = singleWord.match(/[a-z]$/);
+  var lastLetterUppercase = lastLetter.toString().toUpperCase();
+  return firstLetterUppercase + lastLetterUppercase;
+}
+var reverseLettersFunction = function(twoLetters) {
+  return twoLetters.split("").reverse().join("");
 }
 
 userSentence = prompt("Enter a sentence.");
-capitalizedPhase = capitalizeFirstAndLast(userSentence);
-console.log(capitalizedPhase);
+var firstLastLetterUpperCase = capitalizeFirstAndLast(userSentence);
+var reverseLetters = reverseLettersFunction(firstLastLetterUpperCase);
+console.log(reverseLetters);
